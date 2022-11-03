@@ -9,8 +9,6 @@ export default () => {
     { board: Array(9).fill(null), isXNext: true },
   ]);
 
-  console.log(history);
-
   const [currentMove, setCurrentMove] = useState(0);
 
   const current = history[currentMove];
