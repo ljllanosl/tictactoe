@@ -15,7 +15,7 @@ export default () => {
 
   const current = history[currentMove];
 
-  const {winner,winningSquares} = calculateWinner(current.board);
+  const { winner, winningSquares } = calculateWinner(current.board);
 
   const handleSquareClick = position => {
     if (current.board[position] || winner) {
@@ -47,17 +47,29 @@ export default () => {
 
   return (
     <div className="app">
-      <h1>Tic Tac Toe</h1>
+      <h1>
+        TIC <span className="text-green">TAC</span> TOE
+      </h1>
       <StatusMessage winner={winner} current={current} />
-      <Board board={current.board} handleSquareClick={handleSquareClick} winningSquares={winningSquares}/>
-      <button type="button" onClick={onNewGame}>
+      <Board
+        board={current.board}
+        handleSquareClick={handleSquareClick}
+        winningSquares={winningSquares}
+      />
+      <button
+        type="button"
+        onClick={onNewGame}
+        className={`btn-reset ${winner ? 'active' : ''}`}
+      >
         Start new game
       </button>
+      <h2 style={{ fontWeight: 'normal' }}>Current game history</h2>
       <History
         history={history}
         movingTo={movingTo}
         currentMove={currentMove}
       />
+      <div className="bg-balls" />
     </div>
   );
 };
